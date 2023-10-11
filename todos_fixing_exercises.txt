@@ -1,0 +1,105 @@
+#------------------------------------------------------
+    HOMEWORK 1
+#------------------------------------------------------
+# EX 6 (imperial_units.py)
+change:
+task6 = "imperial_units.py"
+input6 = "1.3\n"
+expected6 = ("Enter a distance in meters: "
+             "51.18 inch\n"
+             "4.27 feet\n"
+             "1.42 yards\n"
+             "0.00 miles\n")
+
+to:
+task6 = "imperial_units.py"
+input6 = "1.3\n"
+expected6 = ("Enter a distance in meters: "
+             "51.18 inch\n"
+             "4.26 feet\n"                  # MK: I could not reproduce 4.27 with two different approaches.
+             "1.42 yards\n"
+             "0.00 miles\n")
+
+
+#------------------------------------------------------
+    HOMEWORK 2
+#------------------------------------------------------
+# EX 2 (quadratic_equation.py)
+- the solution checker tests for complex numbers when variable root is negative
+- the average student is not fit with complex number 
+-> give a hint in the description that we also need to deal with the case of of negative roots.
+
+# EX 4 (special_sum.py)
+The current code only works for denominator 7. To make it more generic:
+change: for num in range(0, limit + 1, 7):
+to: for num in range(0, limit + 1, denominator):
+
+# EX 5 (search.py)
+current solution does not find files f1.txt and f2.txt if they are in the same folder. Change example solution to:
+import os
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+files = input('Files: ')
+needle = input('Needle: ').lower()
+matches = 0
+for fname in files.split(','):
+    #with open(fname, encoding='utf-8') as f:
+    with open(os.path.join(script_dir, fname), "r") as f:
+        content = f.read()
+        haystack = content.lower()
+        matches += haystack.count(needle)
+print('Occurrences:', matches)
+
+# EX 6 (downloading.py)
+url: http://find-santa.eu/teaching/cms/data/fc.txt
+does not exist
+
+# EX 7 (print_demand.py)
+Students should access online resources:
+URL = "http://find-santa.eu/teaching/cms/vrptw/r101.txt"
+This url does not exist. Change it, and mention the precise url in text.
+
+# EX 8 (financial_data.py)
+-- in script: file ANDR.VI.csv is not found. change beginning to:
+
+import os
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+filename = input("File to analyze: ")
+CLOSING_PRICE_COL = 4
+
+with open(os.path.join(script_dir, filename), "r") as f:
+
+-- in hw2_grader.py change input8 to:
+import os
+script_dir = os.path.dirname(os.path.abspath(__file__))
+input8 = os.path.join(script_dir, "ANDR.VI.csv\n")
+
+# EX 10 (rot13.py)
+file not found: change header to:
+
+import os
+script_dir = os.path.dirname(os.path.abspath(__file__))
+myinput = input("File to decode: ")
+FILENAME = os.path.join(script_dir, myinput)
+
+
+#------------------------------------------------------
+    HOMEWORK 3
+#------------------------------------------------------
+-- main.py is incomplete, and I do not see the intention behind it
+
+# EX 6 (rot13.py)
+add in encode: 
+text = text.upper()
+
+#vrptw reader -> several changes
+
+#------------------------------------------------------
+    HOMEWORK 4
+#------------------------------------------------------
+works on cms_homeworks_mycode
+
+#------------------------------------------------------
+    HOMEWORK 5
+#------------------------------------------------------
